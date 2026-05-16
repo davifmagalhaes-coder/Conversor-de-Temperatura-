@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Temperatura</title>
+    <title>Conversor 3D de Temperatura</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container-3d">
+        <div class="card-3d">
+            <h1>Conversor 3D</h1>
+            
+            <div class="input-group">
+                <label for="celsius">Celsius (°C)</label>
+                <input type="number" id="celsius" value="0" placeholder="0">
+            </div>
 
-    <!-- ESSA DIV CONECTA COM O DESIGN DO CARTÃO -->
-    <div class="container">
-        <h1>Conversor de Temperatura</h1>
-        
-        <!-- Seus inputs, selects e botões entram aqui dentro -->
-        
-        <!-- Caixa de resultado exemplo -->
-        <div class="result-box" id="resultado">
-            O resultado aparecerá aqui
+            <div class="input-group">
+                <label for="fahrenheit">Fahrenheit (°F)</label>
+                <input type="number" id="fahrenheit" value="32" placeholder="32">
+            </div>
+
+            <div class="input-group">
+                <label for="kelvin">Kelvin (K)</label>
+                <input type="number" id="kelvin" value="273.15" placeholder="273.15">
+            </div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
+
