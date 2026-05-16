@@ -1,0 +1,190 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background: linear-gradient(
+    135deg,
+    #6a11cb,
+    #2575fc
+  );
+
+  overflow:hidden;
+}
+
+/* efeito blur no fundo */
+body::before{
+  content:"";
+  position:absolute;
+
+  width:400px;
+  height:400px;
+
+  background:#ffffff20;
+
+  border-radius:50%;
+
+  top:-100px;
+  left:-100px;
+
+  filter:blur(100px);
+}
+
+body::after{
+  content:"";
+  position:absolute;
+
+  width:300px;
+  height:300px;
+
+  background:#00ffd520;
+
+  border-radius:50%;
+
+  bottom:-100px;
+  right:-100px;
+
+  filter:blur(100px);
+}
+
+.container{
+
+  position:relative;
+
+  width:350px;
+
+  padding:40px;
+
+  border-radius:25px;
+
+  background: rgba(255,255,255,0.1);
+
+  backdrop-filter: blur(15px);
+
+  border:1px solid rgba(255,255,255,0.2);
+
+  box-shadow:
+   0 8px 32px rgba(0,0,0,0.2);
+
+  text-align:center;
+
+  color:white;
+
+  animation: aparecer 1s ease;
+}
+
+@keyframes aparecer{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.icone{
+  font-size:60px;
+  margin-bottom:15px;
+
+  color:#ffd700;
+
+  animation:pulsar 2s infinite;
+}
+
+@keyframes pulsar{
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.1);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+}
+
+h1{
+  margin-bottom:25px;
+}
+
+input,
+select,
+button{
+
+  width:100%;
+
+  padding:14px;
+
+  margin-top:15px;
+
+  border:none;
+
+  border-radius:12px;
+
+  outline:none;
+
+  font-size:16px;
+}
+
+input,
+select{
+  background:rgba(255,255,255,0.2);
+  color:white;
+}
+
+input::placeholder{
+  color:#eee;
+}
+
+select option{
+  color:black;
+}
+
+button{
+
+  background: linear-gradient(
+    45deg,
+    #ff512f,
+    #dd2476
+  );
+
+  color:white;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+button:hover{
+
+  transform:scale(1.05);
+
+  box-shadow:
+   0 0 15px #ff4b2b;
+}
+
+#resultado{
+
+  margin-top:25px;
+
+  font-size:24px;
+
+  font-weight:bold;
+
+  color:#fff;
+}
