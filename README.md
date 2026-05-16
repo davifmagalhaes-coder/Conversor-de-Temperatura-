@@ -13,7 +13,7 @@ Um conversor moderno e responsivo desenvolvido com HTML, CSS e JavaScript.
 - Layout responsivo
 
 ## 📸 Preview
-<img width="1633" height="833" alt="image" src="https://github.com/user-attachments/assets/0692bbed-8779-4f40-a7ca-3d3e43793132" />
+<img width="1770" height="879" alt="image" src="https://github.com/user-attachments/assets/f051e559-6a41-429d-a42f-cd342a66924a" />
 
 ## 🔗 Projeto Online
 https://davifmagalhaes-coder.github.io/Conversor-de-Temperatura-/
