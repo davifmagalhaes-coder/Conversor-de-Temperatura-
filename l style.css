@@ -1,190 +1,105 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Arial, sans-serif;
+/* Importa uma fonte moderna e elegante do Google */
+@import url('https://googleapis.com');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-body{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  background: linear-gradient(
-    135deg,
-    #6a11cb,
-    #2575fc
-  );
-
-  overflow:hidden;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Fundo com um degradê moderno de azul para roxo */
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #333;
 }
 
-/* efeito blur no fundo */
-body::before{
-  content:"";
-  position:absolute;
-
-  width:400px;
-  height:400px;
-
-  background:#ffffff20;
-
-  border-radius:50%;
-
-  top:-100px;
-  left:-100px;
-
-  filter:blur(100px);
+/* O cartão do conversor */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    /* Cantos arredondados modernos */
+    border-radius: 20px;
+    /* Sombra suave para dar ângulo e profundidade */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    /* Efeito sutil de rotação/ângulo de entrada (opcional) */
+    transform: perspective(1000px) rotateX(2deg);
 }
 
-body::after{
-  content:"";
-  position:absolute;
-
-  width:300px;
-  height:300px;
-
-  background:#00ffd520;
-
-  border-radius:50%;
-
-  bottom:-100px;
-  right:-100px;
-
-  filter:blur(100px);
+h1 {
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #1e3c72;
+    font-size: 24px;
 }
 
-.container{
-
-  position:relative;
-
-  width:350px;
-
-  padding:40px;
-
-  border-radius:25px;
-
-  background: rgba(255,255,255,0.1);
-
-  backdrop-filter: blur(15px);
-
-  border:1px solid rgba(255,255,255,0.2);
-
-  box-shadow:
-   0 8px 32px rgba(0,0,0,0.2);
-
-  text-align:center;
-
-  color:white;
-
-  animation: aparecer 1s ease;
+/* Campos de entrada e seleção */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-@keyframes aparecer{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 400;
+    color: #555;
+    font-size: 14px;
 }
 
-.icone{
-  font-size:60px;
-  margin-bottom:15px;
-
-  color:#ffd700;
-
-  animation:pulsar 2s infinite;
+input, select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    /* Bordas arredondadas nos inputs */
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
 }
 
-@keyframes pulsar{
-  0%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.1);
-  }
-
-  100%{
-    transform:scale(1);
-  }
+/* Quando o usuário clica no campo */
+input:focus, select:focus {
+    border-color: #2a0845;
+    box-shadow: 0 0 10px rgba(42, 8, 69, 0.1);
 }
 
-h1{
-  margin-bottom:25px;
+/* Botão de converter estilizado */
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, #1e3c72, #2a0845);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
-input,
-select,
-button{
-
-  width:100%;
-
-  padding:14px;
-
-  margin-top:15px;
-
-  border:none;
-
-  border-radius:12px;
-
-  outline:none;
-
-  font-size:16px;
+/* Efeito ao passar o mouse no botão */
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-input,
-select{
-  background:rgba(255,255,255,0.2);
-  color:white;
-}
-
-input::placeholder{
-  color:#eee;
-}
-
-select option{
-  color:black;
-}
-
-button{
-
-  background: linear-gradient(
-    45deg,
-    #ff512f,
-    #dd2476
-  );
-
-  color:white;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-  transition:0.3s;
-}
-
-button:hover{
-
-  transform:scale(1.05);
-
-  box-shadow:
-   0 0 15px #ff4b2b;
-}
-
-#resultado{
-
-  margin-top:25px;
-
-  font-size:24px;
-
-  font-weight:bold;
-
-  color:#fff;
+/* Área do resultado */
+.result-box {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #f4f7f6;
+    border-left: 5px solid #1e3c72;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #222;
 }
