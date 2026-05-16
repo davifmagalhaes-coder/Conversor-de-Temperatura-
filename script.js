@@ -1,67 +1,102 @@
-// Seleção dos elementos do DOM
-const celsiusInput = document.getElementById('celsius');
-const fahrenheitInput = document.getElementById('fahrenheit');
-const kelvinInput = document.getElementById('kelvin');
-const body = document.body;
+function convertTemperature(){
 
-// Função para atualizar as cores do fundo com base na temperatura em Celsius
-function atualizarCorFundo(celsius) {
-    if (celsius <= 0) {
-        // Frio Extremo: Azul escuro / Roxo
-        body.style.background = "linear-gradient(135deg, #1d2b64, #f8cdda)";
-    } else if (celsius > 0 && celsius <= 18) {
-        // Frio/Agradável: Azul claro / Ciano
-        body.style.background = "linear-gradient(135deg, #2b5876, #4e4376)";
-    } else if (celsius > 18 && celsius <= 30) {
-        // Quente moderado: Laranja / Verde amarelado
-        body.style.background = "linear-gradient(135deg, #11998e, #38ef7d)";
-    } else {
-        // Muito Quente: Vermelho / Laranja Vivo
-        body.style.background = "linear-gradient(135deg, #f12711, #f5af19)";
-    }
+  const temp = parseFloat(
+    document.getElementById("temperature").value
+  );
+
+  const from = document.getElementById("fromUnit").value;
+  const to = document.getElementById("toUnit").value;
+
+  const resultText = document.getElementById("resultText");
+
+  let celsius;
+
+  // Converter para Celsius primeiro
+
+  if(from === "C"){
+    celsius = temp;
+  }
+  else if(from === "F"){
+    celsius = (temp - 32) * 5/9;
+  }
+  else{
+    celsius = temp - 273.15;
+  }
+
+  let result;
+
+  // Converter do Celsius para destino
+
+  if(to === "C"){
+    result = celsius;
+  }
+  else if(to === "F"){
+    result = (celsius * 9/5) + 32;
+  }
+  else{
+    result = celsius + 273.15;
+  }
+
+  resultText.innerHTML =
+    `${result.toFixed(2)} °${to}`;
+
+  updateTheme(celsius);
 }
 
-// Evento para cálculo a partir do Celsius
-celsiusInput.addEventListener('input', () => {
-    const c = parseFloat(celsiusInput.value);
-    if (!isNaN(c)) {
-        fahrenheitInput.value = ((c * 9/5) + 32).toFixed(2);
-        kelvinInput.value = (c + 273.15).toFixed(2);
-        atualizarCorFundo(c);
-    } else {
-        esvaziarInputs();
-    }
-});
+function updateTheme(temp){
 
-// Evento para cálculo a partir do Fahrenheit
-fahrenheitInput.addEventListener('input', () => {
-    const f = parseFloat(fahrenheitInput.value);
-    if (!isNaN(f)) {
-        const c = (f - 32) * 5/9;
-        celsiusInput.value = c.toFixed(2);
-        kelvinInput.value = (c + 273.15).toFixed(2);
-        atualizarCorFundo(c);
-    } else {
-        esvaziarInputs();
-    }
-});
+  const body = document.body;
+  const glow = document.querySelector(".background-glow");
+  const cube = document.querySelector(".cube");
 
-// Evento para cálculo a partir do Kelvin
-kelvinInput.addEventListener('input', () => {
-    const k = parseFloat(kelvinInput.value);
-    if (!isNaN(k)) {
-        const c = k - 273.15;
-        celsiusInput.value = c.toFixed(2);
-        fahrenheitInput.value = ((c * 9/5) + 32).toFixed(2);
-        atualizarCorFundo(c);
-    } else {
-        esvaziarInputs();
-    }
-});
+  // FRIO
 
-// Limpa os campos caso o usuário apague tudo
-function esvaziarInputs() {
-    celsiusInput.value = '';
-    fahrenheitInput.value = '';
-    kelvinInput.value = '';
+  if(temp <= 10){
+
+    body.style.background =
+      "linear-gradient(135deg,#020617,#0ea5e9)";
+
+    glow.style.background =
+      "#38bdf8";
+
+    cube.style.boxShadow =
+      "0 0 40px rgba(56,189,248,0.9)";
+
+    cube.style.transform =
+      "scale(1.1) rotateX(15deg)";
+  }
+
+  // AMENO
+
+  else if(temp > 10 && temp < 30){
+
+    body.style.background =
+      "linear-gradient(135deg,#111827,#7c3aed)";
+
+    glow.style.background =
+      "#a855f7";
+
+    cube.style.boxShadow =
+      "0 0 40px rgba(168,85,247,0.9)";
+
+    cube.style.transform =
+      "scale(1.15) rotateY(15deg)";
+  }
+
+  // QUENTE
+
+  else{
+
+    body.style.background =
+      "linear-gradient(135deg,#3b0764,#ff5e00)";
+
+    glow.style.background =
+      "#ff5e00";
+
+    cube.style.boxShadow =
+      "0 0 50px rgba(255,94,0,1)";
+
+    cube.style.transform =
+      "scale(1.2) rotateZ(10deg)";
+  }
 }
